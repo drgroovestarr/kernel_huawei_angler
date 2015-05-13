@@ -585,6 +585,7 @@ struct rq {
 
 	/* sys_sched_yield() stats */
 	unsigned int yld_count;
+	unsigned int yield_sleep_count;
 
 	/* schedule() stats */
 	unsigned int sched_count;
@@ -776,7 +777,6 @@ extern void sched_account_irqtime(int cpu, struct task_struct *curr,
 unsigned int cpu_temp(int cpu);
 extern unsigned int nr_eligible_big_tasks(int cpu);
 extern void update_up_down_migrate(void);
-extern int power_delta_exceeded(unsigned int cpu_cost, unsigned int base_cost);
 
 /*
  * 'load' is in reference to "best cpu" at its best frequency.
@@ -1233,6 +1233,7 @@ static inline void finish_lock_switch(struct rq *rq, struct task_struct *prev)
 #define WF_SYNC		0x01		/* waker goes to sleep after wakeup */
 #define WF_FORK		0x02		/* child wakeup after fork */
 #define WF_MIGRATED	0x4		/* internal use, task got migrated */
+#define WF_NO_NOTIFIER	0x08		/* do not notify governor */
 
 static inline void update_load_add(struct load_weight *lw, unsigned long inc)
 {
@@ -1312,8 +1313,10 @@ static const u32 prio_to_wmult[40] = {
 #else
 #define ENQUEUE_WAKING		0
 #endif
+#define ENQUEUE_MIGRATING	8
 
 #define DEQUEUE_SLEEP		1
+#define DEQUEUE_MIGRATING	2
 
 struct sched_class {
 	const struct sched_class *next;
@@ -1433,7 +1436,7 @@ static inline void inc_nr_running(struct rq *rq)
 	sched_update_nr_prod(cpu_of(rq), 1, true);
 	rq->nr_running++;
 
-	if (rq->nr_running == 2) {
+	if (rq->nr_running >= 2) {
 #ifdef CONFIG_SMP
 		if (!rq->rd->overload)
 			rq->rd->overload = true;
@@ -1446,7 +1449,7 @@ static inline void inc_nr_running(struct rq *rq)
 			smp_send_reschedule(rq->cpu);
 		}
 #endif
-	}
+       }
 }
 
 static inline void dec_nr_running(struct rq *rq)
@@ -1472,6 +1475,8 @@ extern void check_preempt_curr(struct rq *rq, struct task_struct *p, int flags);
 extern const_debug unsigned int sysctl_sched_time_avg;
 extern const_debug unsigned int sysctl_sched_nr_migrate;
 extern const_debug unsigned int sysctl_sched_migration_cost;
+extern const_debug unsigned int sysctl_sched_yield_sleep_duration;
+extern const_debug int sysctl_sched_yield_sleep_threshold;
 
 static inline u64 sched_avg_period(void)
 {

@@ -451,15 +451,6 @@ static struct ctl_table kern_table[] = {
 		.extra1		= &zero,
 		.extra2		= &one,
 	},
-	{
-		.procname	= "power_aware_timer_migration",
-		.data		= &sysctl_power_aware_timer_migration,
-		.maxlen		= sizeof(unsigned int),
-		.mode		= 0644,
-		.proc_handler	= proc_dointvec_minmax,
-		.extra1		= &zero,
-		.extra2		= &one,
-	},
 #endif	/* CONFIG_SCHED_HMP */
 #ifdef CONFIG_SCHED_DEBUG
 	{
@@ -488,6 +479,20 @@ static struct ctl_table kern_table[] = {
 		.proc_handler	= sched_proc_update_handler,
 		.extra1		= &min_wakeup_granularity_ns,
 		.extra2		= &max_wakeup_granularity_ns,
+	},
+	{
+		.procname	= "sched_yield_sleep_threshold",
+		.data		= &sysctl_sched_yield_sleep_threshold,
+		.maxlen		= sizeof(int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
+	},
+	{
+		.procname	= "sched_yield_sleep_duration",
+		.data		= &sysctl_sched_yield_sleep_duration,
+		.maxlen		= sizeof(unsigned int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
 	},
 #ifdef CONFIG_SMP
 	{
