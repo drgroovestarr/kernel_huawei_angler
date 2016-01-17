@@ -79,7 +79,7 @@ static bool hotplug_boost = 1;
 module_param(hotplug_boost, bool, 0644);
 
 #ifdef CONFIG_STATE_NOTIFIER
-bool wakeup_cb_boost;
+bool wakeup_cb_boost = 1;
 module_param_named(wakeup_boost, wakeup_cb_boost, bool, 0644);
 #endif
 
