@@ -24,7 +24,6 @@ VER="-v0.15"
 AK_VER="$BASE_AK_VER$VER"
 
 # Vars
-export LOCALVERSION=~`echo $AK_VER`
 export CROSS_COMPILE="$TOOLCHAIN_DIR/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-"
 export ARCH=arm64
 export SUBARCH=arm64
