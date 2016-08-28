@@ -12,30 +12,30 @@ clear
 THREAD="-j$(grep -c ^processor /proc/cpuinfo)"
 KERNEL="Image.gz"
 DTBIMAGE="dtb"
-DEFCONFIG="ak_angler_defconfig"
+DEFCONFIG="megatron_defconfig"
 KERNEL_DIR=`pwd`
 RESOURCE_DIR="$KERNEL_DIR/.."
-ANYKERNEL_DIR="$RESOURCE_DIR/AK-Angler-AnyKernel2"
-TOOLCHAIN_DIR="/home/ak/android"
+ANYKERNEL_DIR="$RESOURCE_DIR/AnyKernel2"
+TOOLCHAIN_DIR="/home/drgroovestarr/toolchain"
 
 # Kernel Details
-BASE_AK_VER="AK"
-VER=".053.ANGLER"
+BASE_AK_VER="Megatron"
+VER="-v0.15"
 AK_VER="$BASE_AK_VER$VER"
 
 # Vars
 export LOCALVERSION=~`echo $AK_VER`
-export CROSS_COMPILE="$TOOLCHAIN_DIR/AK-uber64-5.3/bin/aarch64-linux-android-"
+export CROSS_COMPILE="$TOOLCHAIN_DIR/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-"
 export ARCH=arm64
 export SUBARCH=arm64
-export KBUILD_BUILD_USER=ak
-export KBUILD_BUILD_HOST=kernel
+export KBUILD_BUILD_USER=drgroovestarr
+export KBUILD_BUILD_HOST=starkiller_base
 
 # Paths
 REPACK_DIR="$ANYKERNEL_DIR"
 PATCH_DIR="$ANYKERNEL_DIR/patch"
 MODULES_DIR="$ANYKERNEL_DIR/modules"
-ZIP_MOVE="$RESOURCE_DIR/AK-releases"
+ZIP_MOVE="$RESOURCE_DIR/Megatron-Release"
 ZIMAGE_DIR="$KERNEL_DIR/arch/arm64/boot"
 
 # Functions
@@ -84,14 +84,16 @@ function make_zip {
 DATE_START=$(date +"%s")
 
 echo -e "${green}"
-echo "AK Kernel Creation Script:"
-echo "    _____                         "
-echo "   (, /  |              /)   ,    "
-echo "     /---| __   _   __ (/_     __ "
-echo "  ) /    |_/ (_(_(_/ (_/(___(_(_(_"
-echo " ( /                              "
-echo " _/                               "
-echo
+echo "*******Megatron Kernel FTW*********"
+echo " ____ ____, ____, __, ,____,_,  _, "
+echo "(-|__|-|__)(-/  \( |_/(-|_,(-|\ |  " 
+echo " _|__)_|  \,_\__/,_| \,_|__,_| \|, "
+echo "(    (     (     (    (    (       "
+echo "  ____,_,  _,____, __,  ____,____, "
+echo " (-/_|(-|\ |(-/ _,(-|  (-|_,(-|__) "
+echo " _/  |,_| \|,_\__| _|__,_|__,_|  \,"
+echo "(     (     (     (    (    (      "
+echo "**********M*E*G*A*T*R*O*N**********"
 
 echo "---------------"
 echo "Kernel Version:"
@@ -100,12 +102,13 @@ echo "---------------"
 echo -e "${red}"; echo -e "${blink_red}"; echo "$AK_VER"; echo -e "${restore}";
 
 echo -e "${green}"
-echo "-----------------"
-echo "Making AK Kernel:"
-echo "-----------------"
+echo "-----------------------------------"
+echo "      Making Megatron Kernel       "
+echo "  And formatting your hard drive:  "
+echo "-----------------------------------"
 echo -e "${restore}"
 
-while read -p "Do you want to clean stuffs (y/n)? " cchoice
+while read -p "Do you want to clean out the old crusties (y/n)? " cchoice
 do
 case "$cchoice" in
 	y|Y )
@@ -119,7 +122,7 @@ case "$cchoice" in
 		;;
 	* )
 		echo
-		echo "Invalid try again!"
+		echo "FFS! Invalid try again!"
 		echo
 		;;
 esac
@@ -127,7 +130,7 @@ done
 
 echo
 
-while read -p "Do you want to build kernel (y/n)? " dchoice
+while read -p "Do you want to build Megatron (y/n)? " dchoice
 do
 case "$dchoice" in
 	y|Y)
@@ -142,7 +145,7 @@ case "$dchoice" in
 		;;
 	* )
 		echo
-		echo "Invalid try again!"
+		echo "SMH!! Invalid try again!"
 		echo
 		;;
 esac
