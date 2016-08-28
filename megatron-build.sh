@@ -16,7 +16,7 @@ DEFCONFIG="megatron_defconfig"
 KERNEL_DIR=`pwd`
 RESOURCE_DIR="$KERNEL_DIR/.."
 ANYKERNEL_DIR="$RESOURCE_DIR/AnyKernel2"
-TOOLCHAIN_DIR="/home/drgroovestarr/toolchain"
+TOOLCHAIN_DIR="/home/drgroovestarr/android/toolchain"
 
 # Kernel Details
 BASE_AK_VER="Megatron"
