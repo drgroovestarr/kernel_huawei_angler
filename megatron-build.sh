@@ -21,7 +21,7 @@ BUILD_DATE="date +"%Y%m%d""
 
 # Kernel Details
 BASE_AK_VER="Megatron"
-VER="v0.15"
+VER="v0.16"
 AK_VER="$BASE_AK_VER-$VER-$BUILD_DATE"
 
 # Vars
