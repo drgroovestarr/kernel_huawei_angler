@@ -17,7 +17,7 @@ KERNEL_DIR=`pwd`
 RESOURCE_DIR="$KERNEL_DIR/.."
 ANYKERNEL_DIR="$RESOURCE_DIR/AnyKernel2"
 TOOLCHAIN_DIR="/home/drgroovestarr/android/toolchain"
-BUILD_DATE="date +"%Y%m%d""
+BUILD_DATE="$(date +"%Y%m%d")"
 
 # Kernel Details
 BASE_AK_VER="Megatron"
