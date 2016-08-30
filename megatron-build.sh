@@ -17,11 +17,12 @@ KERNEL_DIR=`pwd`
 RESOURCE_DIR="$KERNEL_DIR/.."
 ANYKERNEL_DIR="$RESOURCE_DIR/AnyKernel2"
 TOOLCHAIN_DIR="/home/drgroovestarr/android/toolchain"
+BUILD_DATE="date +"%Y%m%d""
 
 # Kernel Details
 BASE_AK_VER="Megatron"
-VER="-v0.15"
-AK_VER="$BASE_AK_VER$VER"
+VER="v0.15"
+AK_VER="$BASE_AK_VER-$VER-$BUILD_DATE"
 
 # Vars
 export CROSS_COMPILE="$TOOLCHAIN_DIR/aarch64-linux-android-4.9-kernel/bin/aarch64-linux-android-"
