@@ -78,7 +78,7 @@ function make_zip {
 DATE_START=$(date +"%s")
 
 echo -e "${green}"
-echo "*******Megatron Kernel FTW*********"
+echo "********Megatron Kernel FTW********"
 echo " ____ ____, ____, __, ,____,_,  _, "
 echo "(-|__|-|__)(-/  \( |_/(-|_,(-|\ |  " 
 echo " _|__)_|  \,_\__/,_| \,_|__,_| \|, "
