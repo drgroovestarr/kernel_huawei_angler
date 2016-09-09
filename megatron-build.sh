@@ -130,7 +130,7 @@ done
 
 # Kernel Details
 BASE_AK_VER="Megatron"
-VER="v0.22"
+VER="v0.30"
 AK_VER="$BASE_AK_VER-$VER-$TC-$BUILD_DATE"
 
 while read -p "Do you want to clean out the old crusties (y/n)? " cchoice
