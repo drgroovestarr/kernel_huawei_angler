@@ -498,7 +498,7 @@ static void cpufreq_impulse_timer(unsigned long data)
 	tunables->boosted = tunables->boosted;
 #endif			
 #ifdef CONFIG_MSM_HOTPLUG
-	tunables->boosted = fast_lane_mode || tunables->boosted;
+	tunables->boosted = tunables->boosted;
 #endif
 #ifdef CONFIG_STATE_NOTIFIER
 	tunables->boosted = tunables->boosted && !state_suspended;
