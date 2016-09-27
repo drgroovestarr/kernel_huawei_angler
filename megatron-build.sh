@@ -24,7 +24,7 @@ BUILD_DATE="$(date +"%Y%m%d")"
 export ARCH=arm64
 export SUBARCH=arm64
 export KBUILD_BUILD_USER=drgroovestarr
-export KBUILD_BUILD_HOST=starkiller_base
+export KBUILD_BUILD_HOST=cybertron
 
 # Paths
 REPACK_DIR="$ANYKERNEL_DIR"
