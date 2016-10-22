@@ -16,7 +16,7 @@ DEFCONFIG="megatron_defconfig"
 KERNEL_DIR=`pwd`
 RESOURCE_DIR="$KERNEL_DIR/.."
 ANYKERNEL_DIR="$RESOURCE_DIR/AnyKernel2"
-TOOLCHAIN_DIR="/home/drgroovestarr/android/toolchain"
+TOOLCHAIN_DIR="$RESOURCE_DIR/toolchain"
 BUILD_DATE="$(date +"%Y%m%d")"
 
 
